@@ -1,0 +1,72 @@
+.searchbar {
+    background-color: var(--clr-grey);
+    display: flex;
+    flex-wrap: wrap;
+    height: 48px;
+    padding: 0 24px;
+}
+
+.searchbar-input {
+    background-color: var(--clr-grey);
+    outline: none;
+    border: none;
+    width: calc(100% - 20px);
+    height: 48px;
+}
+
+.searchbar-action {
+    background-color: var(--clr-grey);
+    width: 20px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account {
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-figure {
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    background-color: var(--clr-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24px;
+}
+
+.figure-text {
+    color: var(--clr-background);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.account-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 24px;
+}
+
+.account-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.account-name {
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 3px;
+}
+
+.account-role {
+    padding-top: 3px;
+    font-size: 14px;
+    font-weight: 500;
+}
