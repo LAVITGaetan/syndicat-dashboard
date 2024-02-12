@@ -47,7 +47,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 32px;
+    padding: 0 5%;
 }
 
 .sidebar {
@@ -62,7 +62,7 @@ body {
     grid-area: 2 / 2 / 3 / 3;
     background: var(--clr-grey);
     overflow: auto;
-    padding: 32px;
+    padding: 48px 5%;
 }
 
 .topbar-title {
@@ -74,4 +74,12 @@ body {
 .title-design {
     font-size: 32px;
     color: var(--clr-accent);
+}
+
+.content-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--clr-text);
+
+    margin-bottom: 24px;
 }
