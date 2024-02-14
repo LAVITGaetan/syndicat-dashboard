@@ -1,4 +1,11 @@
-<h2 class="content-title">Gestion des mandataires</h2>
+
+<div class="page">
+    <app-topbar-left></app-topbar-left>
+    <app-topbar-right></app-topbar-right>
+  
+    <app-sidebar></app-sidebar>
+    <div class="content">
+        <h2 class="content-title">Gestion des mandataires</h2>
 <button *ngIf="formHidden" class="form-action" (click)="showForm()">Ajouter un mandataire</button>
 <form class="hidden-form" [formGroup]="mandataireForm" (ngSubmit)="addMandataire()">
     <div class="form-close" (click)="showForm()">x</div>
@@ -76,3 +83,5 @@
         <h3 class="modal-text">{{modalText}}</h3> <button (click)="closeModal()" class="modal-close">Continuer</button>
     </div>
 </div>
+    </div>
+  </div>

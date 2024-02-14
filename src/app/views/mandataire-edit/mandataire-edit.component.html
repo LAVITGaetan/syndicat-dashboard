@@ -1,4 +1,10 @@
-<h2 class="content-title">Modifier un mandataire</h2>
+<div class="page">
+    <app-topbar-left></app-topbar-left>
+    <app-topbar-right></app-topbar-right>
+  
+    <app-sidebar></app-sidebar>
+    <div class="content">
+        <h2 class="content-title">Modifier un mandataire</h2>
 
 <form class="form" [formGroup]="mandataireForm" (ngSubmit)="editMandataire()">
 
@@ -32,3 +38,5 @@
 
 
 <div *ngIf="modalShowed" class="modal"><div class="modal-content"><h3 class="modal-text">Mandataire modifié avec succés</h3> <button (click)="closeModal()" class="modal-close">Continuer</button></div></div>
+    </div>
+  </div>

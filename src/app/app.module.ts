@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdherentEditComponent } from './views/adherent-edit/adherent-edit.component';
 import { MandataireComponent } from './views/mandataire/mandataire.component';
 import { MandataireEditComponent } from './views/mandataire-edit/mandataire-edit.component';
+import { LoginComponent } from './views/login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MandataireEditComponent } from './views/mandataire-edit/mandataire-edit
     AdherentEditComponent,
     MandataireComponent,
     MandataireEditComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

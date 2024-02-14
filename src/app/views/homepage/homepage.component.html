@@ -1,4 +1,10 @@
-<h2 class="content-title">Statistiques</h2>
+<div class="page">
+    <app-topbar-left></app-topbar-left>
+    <app-topbar-right></app-topbar-right>
+  
+    <app-sidebar></app-sidebar>
+    <div class="content">
+        <h2 class="content-title">Statistiques</h2>
 <div class="stat-container">
     <div class="stat-card">
         <div class="stat-figure">
@@ -13,7 +19,7 @@
             <img width="48px" height="32px" src="./assets/images/icon-mandataire-white.svg" alt="" class="stat-image">
 
         </div>
-        <p class="stat-value">24</p>
+        <p class="stat-value">{{mandataire_count}}</p>
         <p class="stat-name">Mandataires</p>
     </div>
     <div class="stat-card">
@@ -50,3 +56,6 @@
     
   
 </div>
+
+    </div>
+  </div>
