@@ -3,6 +3,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-mandataire-edit',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./mandataire-edit.component.css']
 })
 export class MandataireEditComponent {
-  constructor(private route: ActivatedRoute, private afs: FirestoreService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private afs: FirestoreService, private router: Router, private auth : AuthentificationService) { }
   id: any
   mandataire: any
   modalShowed: boolean = false
@@ -22,6 +23,7 @@ export class MandataireEditComponent {
     phone: new FormControl('', Validators.required),
   })
   ngOnInit() {
+    this.auth.isLoggedIn()
     this.route.params.subscribe(params => {
       this.id = params['id']
     })

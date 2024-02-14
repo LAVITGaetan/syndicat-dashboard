@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-mandataire',
@@ -9,7 +10,7 @@ import { Validators, FormControl, FormGroup } from '@angular/forms';
 })
 export class MandataireComponent {
  
-    constructor(private afs: FirestoreService) { }
+    constructor(private afs: FirestoreService, private auth : AuthentificationService) { }
     modalShowed : boolean = false
     modalText : string = ''
     mandataireCollection: any
@@ -25,6 +26,7 @@ export class MandataireComponent {
     })
   
     ngOnInit() {
+      this.auth.isLoggedIn()
       this.afs.getCollectionDocs('mandataires').subscribe(docs => {
         this.mandataireCollection = docs
         console.log(this.mandataireCollection);

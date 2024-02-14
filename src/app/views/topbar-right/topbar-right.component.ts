@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-topbar-right',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./topbar-right.component.css']
 })
 export class TopbarRightComponent {
+constructor(private auth : AuthentificationService) {}
 
+logout() {
+  this.auth.logout()
+}
 }

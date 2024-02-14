@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-adherent',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./adherent.component.css']
 })
 export class AdherentComponent {
-  constructor(private afs: FirestoreService) { }
+  constructor(private afs: FirestoreService, private auth : AuthentificationService) { }
   modalShowed : boolean = false
   modalText : string = ''
   adherentCollection: any
@@ -23,6 +24,7 @@ export class AdherentComponent {
   })
 
   ngOnInit() {
+    this.auth.isLoggedIn()
     this.afs.getCollectionDocs('adherents').subscribe(docs => {
       console.log(docs.length);
 

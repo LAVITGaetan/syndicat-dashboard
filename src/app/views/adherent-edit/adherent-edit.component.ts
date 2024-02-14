@@ -3,6 +3,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-adherent-edit',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AdherentEditComponent {
 
-  constructor(private route: ActivatedRoute, private afs: FirestoreService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private afs: FirestoreService, private router: Router, private auth : AuthentificationService) { }
   id: any
   adherent: any
   modalShowed: boolean = false
@@ -22,6 +23,7 @@ export class AdherentEditComponent {
     phone: new FormControl('', Validators.required),
   })
   ngOnInit() {
+    this.auth.isLoggedIn()
     this.route.params.subscribe(params => {
       this.id = params['id']
     })
