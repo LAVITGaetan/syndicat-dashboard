@@ -1,7 +1,7 @@
 <div class="sidebar">
     <a [class.selected]="selectedItem == 'default'"  (click)="selectSidebar('default')" [routerLink]="['']" class="sidebar-item"><img width="24px" height="24px" src="./assets/images/icon-dashboard.svg" alt="dashboard" class="sidebar-image"><p class="sidebar-text">Dashboard</p></a>
     <a [class.selected]="selectedItem == 'adherents'" (click)="selectSidebar('adherents')" [routerLink]="['adherents']" class="sidebar-item"><img width="24px" height="24px" src="./assets/images/icon-adherent.svg" alt="Adhérents" class="sidebar-image"><p class="sidebar-text">Adhérents</p></a>
-    <a class="sidebar-item"><img width="24px" height="24px" src="./assets/images/icon-mandataire.svg" alt="Mandataires" class="sidebar-image"><p class="sidebar-text">Mandataires</p></a>
+    <a [class.selected]="selectedItem == 'mandataires'" (click)="selectSidebar('mandataires')" [routerLink]="['mandataires']" class="sidebar-item"><img width="24px" height="24px" src="./assets/images/icon-mandataire.svg" alt="Mandataires" class="sidebar-image"><p class="sidebar-text">Mandataires</p></a>
     <a class="sidebar-item"><img width="24px" height="24px" src="./assets/images/icon-sondage.svg" alt="Sondages" class="sidebar-image"><p class="sidebar-text">Sondages</p></a>
     <a class="sidebar-item"><img width="24px" height="24px" src="./assets/images/icon-galerie.svg" alt="Galerie" class="sidebar-image"><p class="sidebar-text">Galerie</p></a>
 </div>

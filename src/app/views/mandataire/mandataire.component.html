@@ -1,0 +1,78 @@
+<h2 class="content-title">Gestion des mandataires</h2>
+<button *ngIf="formHidden" class="form-action" (click)="showForm()">Ajouter un mandataire</button>
+<form class="hidden-form" [formGroup]="mandataireForm" (ngSubmit)="addMandataire()">
+    <div class="form-close" (click)="showForm()">x</div>
+    <div class="form-group">
+        <label class="form-label">Prénom</label>
+        <input [class.invalid]="mandataireForm.get('firstName')?.invalid && (mandataireForm.get('firstName')?.touched)"
+            placeholder="Prénom" class="form-input" type="text" formControlName="firstName">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Nom</label>
+        <input [class.invalid]="mandataireForm.get('lastName')?.invalid && (mandataireForm.get('lastName')?.touched)"
+            placeholder="Nom" class="form-input" type="text" formControlName="lastName">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Durée du mandat</label>
+        <input [class.invalid]="mandataireForm.get('duration')?.invalid && (mandataireForm.get('duration')?.touched)"
+            placeholder="1an" class="form-input" type="text" formControlName="duration">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Renouvellement du mandat</label>
+        <input [class.invalid]="mandataireForm.get('renewDate')?.invalid && (mandataireForm.get('renewDate')?.touched)"
+            placeholder="Date de renouvellement" class="form-input" type="text" formControlName="renewDate">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Email</label>
+        <input [class.invalid]="mandataireForm.get('email')?.invalid && (mandataireForm.get('email')?.touched)"
+            placeholder="Email de la société" class="form-input" type="text" formControlName="email">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Téléphone</label>
+        <input [class.invalid]="mandataireForm.get('phone')?.invalid && (mandataireForm.get('phone')?.touched)"
+            placeholder="0262 ..." class="form-input" type="text" formControlName="phone">
+    </div>
+    <div class="form-submit">
+
+        <button [class.disabled]="!mandataireForm.valid" [disabled]="!mandataireForm.valid" class="form-action"
+            type="submit">Ajouter un mandataire</button>
+    </div>
+
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Représantant</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Durée</th>
+            <th>Renouvellement</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-row" *ngFor="let mandataire of mandataireCollection">
+            <td>{{mandataire.firstName}} {{mandataire.lastName}}</td>
+            <td>{{mandataire.email}}</td>
+            <td>{{mandataire.phone}}</td>
+            <td>{{mandataire.duration}}</td>
+            <td>{{mandataire.renewDate}}</td>
+            <td>
+                <a [routerLink]="[mandataire.email]"><img class="edit-icon" width="24px" height="24px"
+                        src="./assets/images/icon-edit.svg" alt="modifier"></a>
+
+                <img class="delete-icon" (click)="deleteMandataire(mandataire.email)" width="24px" height="24px"
+                    src="./assets/images/icon-delete.svg" alt="supprimer">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="modalShowed" class="modal">
+    <div class="modal-content">
+        <h3 class="modal-text">{{modalText}}</h3> <button (click)="closeModal()" class="modal-close">Continuer</button>
+    </div>
+</div>

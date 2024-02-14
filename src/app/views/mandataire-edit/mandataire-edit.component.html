@@ -1,0 +1,34 @@
+<h2 class="content-title">Modifier un mandataire</h2>
+
+<form class="form" [formGroup]="mandataireForm" (ngSubmit)="editMandataire()">
+
+    <div class="form-group">
+        <label class="form-label">Prénom</label>
+        <input [class.invalid]="mandataireForm.get('firstName')?.invalid && (mandataireForm.get('firstName')?.touched)" class="form-input" type="text" formControlName="firstName">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Nom</label>
+        <input [class.invalid]="mandataireForm.get('lastName')?.invalid && (mandataireForm.get('lastName')?.touched)" class="form-input" type="text" formControlName="lastName">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Téléphone</label>
+        <input [class.invalid]="mandataireForm.get('phone')?.invalid && (mandataireForm.get('phone')?.touched)" class="form-input" type="text" formControlName="phone">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Durée du mandat</label>
+        <input [class.invalid]="mandataireForm.get('duration')?.invalid && (mandataireForm.get('duration')?.touched)"  class="form-input" type="text" formControlName="duration">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Date de renouvellement</label>
+        <input [class.invalid]="mandataireForm.get('renewDate')?.invalid && (mandataireForm.get('renewDate')?.touched)"  class="form-input" type="text" formControlName="renewDate">
+    </div>
+    <div class="form-submit">
+
+        <button [class.disabled]="!mandataireForm.valid" [disabled]="!mandataireForm.valid" class="form-action" type="submit">Modifier un mandataire</button>
+    </div>
+
+</form>
+
+
+<div *ngIf="modalShowed" class="modal"><div class="modal-content"><h3 class="modal-text">Mandataire modifié avec succés</h3> <button (click)="closeModal()" class="modal-close">Continuer</button></div></div>

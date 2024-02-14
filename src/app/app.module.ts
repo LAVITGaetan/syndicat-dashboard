@@ -16,6 +16,8 @@ import { environment } from './environments/environment';
 import { AdherentComponent } from './views/adherent/adherent.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdherentEditComponent } from './views/adherent-edit/adherent-edit.component';
+import { MandataireComponent } from './views/mandataire/mandataire.component';
+import { MandataireEditComponent } from './views/mandataire-edit/mandataire-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { AdherentEditComponent } from './views/adherent-edit/adherent-edit.compo
     TopbarRightComponent,
     AdherentComponent,
     AdherentEditComponent,
+    MandataireComponent,
+    MandataireEditComponent,
   ],
   imports: [
     BrowserModule,
