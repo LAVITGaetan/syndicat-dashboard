@@ -1,61 +1,65 @@
 <div class="page">
     <app-topbar-left></app-topbar-left>
     <app-topbar-right></app-topbar-right>
-  
+
     <app-sidebar></app-sidebar>
     <div class="content">
         <h2 class="content-title">Statistiques</h2>
-<div class="stat-container">
-    <div class="stat-card">
-        <div class="stat-figure">
-            <img width="48px" height="32px" src="./assets/images/icon-adherent-white.svg" alt="" class="stat-image">
+        <div class="stat-container">
+            <div class="stat-card">
+                <div class="stat-figure">
+                    <img width="48px" height="32px" src="./assets/images/icon-adherent-white.svg" alt=""
+                        class="stat-image">
+
+                </div>
+                <p class="stat-value">{{adherent_count}}</p>
+                <p class="stat-name">Adhérents</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-figure">
+                    <img width="48px" height="32px" src="./assets/images/icon-mandataire-white.svg" alt=""
+                        class="stat-image">
+
+                </div>
+                <p class="stat-value">{{mandataire_count}}</p>
+                <p class="stat-name">Mandataires</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-figure">
+                    <img width="48px" height="32px" src="./assets/images/icon-sondage-white.svg" alt=""
+                        class="stat-image">
+
+                </div>
+                <p class="stat-value">3</p>
+                <p class="stat-name">Sondages en cours</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-figure">
+                    <img width="48px" height="32px" src="./assets/images/icon-galerie-white.svg" alt=""
+                        class="stat-image">
+
+                </div>
+                <p class="stat-value">647</p>
+                <p class="stat-name">Photos</p>
+            </div>
+        </div>
+        <h2 class="content-title">Nos derniers adhérents !</h2>
+
+        <div class="societe-container">
+            <div *ngFor="let adherent of adherents.slice(0, 9)" class="societe-card">
+                <div class="societe-figure">
+                    <img width="48px" height="48px" [src]="adherent.logo" class="societe-icon">
+                </div>
+                <p class="societe-name">{{adherent.company}}</p>
+                <p class="societe-section">{{adherent.section}}</p>
+                <div class="societe-action">
+                    <img width="32px" height="32px" src="./assets/images/icon-goto.svg" alt="voir">
+                </div>
+            </div>
+
+
 
         </div>
-        <p class="stat-value">{{adherent_count}}</p>
-        <p class="stat-name">Adhérents</p>
-    </div>
-    <div class="stat-card">
-        <div class="stat-figure">
-            <img width="48px" height="32px" src="./assets/images/icon-mandataire-white.svg" alt="" class="stat-image">
 
-        </div>
-        <p class="stat-value">{{mandataire_count}}</p>
-        <p class="stat-name">Mandataires</p>
-    </div>
-    <div class="stat-card">
-        <div class="stat-figure">
-            <img width="48px" height="32px" src="./assets/images/icon-sondage-white.svg" alt="" class="stat-image">
-
-        </div>
-        <p class="stat-value">3</p>
-        <p class="stat-name">Sondages en cours</p>
-    </div>
-    <div class="stat-card">
-        <div class="stat-figure">
-            <img width="48px" height="32px" src="./assets/images/icon-galerie-white.svg" alt="" class="stat-image">
-
-        </div>
-        <p class="stat-value">647</p>
-        <p class="stat-name">Photos</p>
     </div>
 </div>
-<h2 class="content-title">Nos derniers adhérents !</h2>
-
-<div class="societe-container">
-    <div *ngFor="let adherent of adherents.slice(0, 9)" class="societe-card">
-        <div class="societe-figure">
-            <img width="48px" height="48px" src="" alt="" class="societe-icon">
-        </div>
-        <p class="societe-name">{{adherent.company}}</p>
-        <p class="societe-section">{{adherent.section}}</p>
-        <div class="societe-action">
-            <img width="32px" height="32px" src="./assets/images/icon-goto.svg" alt="voir">
-        </div>
-    </div>
-
-    
-  
-</div>
-
-    </div>
-  </div>

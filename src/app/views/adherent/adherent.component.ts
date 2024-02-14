@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthentificationService } from 'src/app/services/authentification.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-adherent',
@@ -9,9 +10,10 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
   styleUrls: ['./adherent.component.css']
 })
 export class AdherentComponent {
-  constructor(private afs: FirestoreService, private auth : AuthentificationService) { }
-  modalShowed : boolean = false
-  modalText : string = ''
+  constructor(private afs: FirestoreService, private auth: AuthentificationService, private fireStorage: AngularFireStorage) { }
+  selectedFile: any
+  modalShowed: boolean = false
+  modalText: string = ''
   adherentCollection: any
   formHidden = true
   adherentForm = new FormGroup({
@@ -21,6 +23,7 @@ export class AdherentComponent {
     email: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
     created_at: new FormControl(''),
+    logo: new FormControl(''),
   })
 
   ngOnInit() {
@@ -33,12 +36,20 @@ export class AdherentComponent {
 
     })
   }
-  addAdherent() {
+  async addAdherent() {
     const now = new Date()
     const docId = this.adherentForm.get('company')?.value
     this.adherentForm.get('created_at')?.setValue(now.toLocaleDateString())
     if (docId != null) {
+      if (this.selectedFile !== null) {
+        const path = `adherents/${this.selectedFile.name}`
+        const uploadTask = await this.fireStorage.upload(path, this.selectedFile)
+        const url = await uploadTask.ref.getDownloadURL()
+        console.log(url);
+        this.adherentForm.get('logo')?.setValue(url)
+      }
       this.afs.setToCollection('adherents', docId, this.adherentForm.value)
+
       this.modalText = 'Adhérent crée avec succés'
       this.modalShowed = true
       this.showForm()
@@ -67,6 +78,11 @@ export class AdherentComponent {
 
   closeModal() {
     this.modalShowed = false
+  }
+
+  async onFileChange(event: any) {
+    const file = event.target.files[0]
+    this.selectedFile = file
   }
 
 }
