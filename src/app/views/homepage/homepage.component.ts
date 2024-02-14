@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-homepage',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
+  constructor(private afs: FirestoreService) { }
+  adherent_count: number = 0
+  ngOnInit() {
+this.afs.getCollectionDocs('adherents').subscribe(docs => {
+  this.adherent_count = docs.length
+})
+  }
 
 }

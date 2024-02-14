@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "syndicat-dashboard",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

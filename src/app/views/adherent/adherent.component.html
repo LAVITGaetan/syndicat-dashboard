@@ -1,0 +1,77 @@
+<h2 class="content-title">Gestion des adhérents</h2>
+<button *ngIf="formHidden" class="form-action" (click)="showForm()">Ajouter un adhérent</button>
+<form class="hidden-form" [formGroup]="adherentForm" (ngSubmit)="addAdherent()">
+    <div class="form-close" (click)="showForm()">x</div>
+    <div class="form-group">
+        <label class="form-label">Société</label>
+        <input [class.invalid]="adherentForm.get('company')?.invalid && (adherentForm.get('company')?.touched)"
+            placeholder="Nom de la société" class="form-input" type="text" formControlName="company">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Section</label>
+        <select class="form-input"
+            [class.invalid]="adherentForm.get('section')?.invalid && (adherentForm.get('section')?.touched)"
+            formControlName="section">
+            <option value="" disabled selected>Sélectionnez une option</option>
+            <option value="artisanat">Artisanat</option>
+            <option value="commerce">Commerce</option>
+            <option value="industrie">Industrie</option>
+            <option value="services">Services</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Activité</label>
+        <input [class.invalid]="adherentForm.get('activity')?.invalid && (adherentForm.get('activity')?.touched)"
+            placeholder="Activité de la société" class="form-input" type="text" formControlName="activity">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Email</label>
+        <input [class.invalid]="adherentForm.get('email')?.invalid && (adherentForm.get('email')?.touched)"
+            placeholder="Email de la société" class="form-input" type="text" formControlName="email">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Téléphone</label>
+        <input [class.invalid]="adherentForm.get('phone')?.invalid && (adherentForm.get('phone')?.touched)"
+            placeholder="0262 ..." class="form-input" type="text" formControlName="phone">
+    </div>
+    <div class="form-submit">
+
+        <button [class.disabled]="!adherentForm.valid" [disabled]="!adherentForm.valid" class="form-action"
+            type="submit">Ajouter un adhérent</button>
+    </div>
+
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Société</th>
+            <th>Section</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let adherent of adherentCollection">
+            <td>{{adherent.company}}</td>
+            <td>{{adherent.section}}</td>
+            <td>{{adherent.email}}</td>
+            <td>{{adherent.phone}}</td>
+            <td>
+                <a [routerLink]="[adherent.company]"><img class="edit-icon" width="24px" height="24px"
+                        src="./assets/images/icon-edit.svg" alt="modifier"></a>
+
+                <img class="delete-icon" (click)="deleteAdherent(adherent.company)" width="24px" height="24px"
+                    src="./assets/images/icon-delete.svg" alt="supprimer">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="modalShowed" class="modal">
+    <div class="modal-content">
+        <h3 class="modal-text">{{modalText}}</h3> <button (click)="closeModal()" class="modal-close">Continuer</button>
+    </div>
+</div>

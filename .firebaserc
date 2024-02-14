@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "syndicat-dashboard": {
+      "hosting": {
+        "syndicat-dashboard": [
+          "syndicat-dashboard"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "syndicat-dashboard"
+  }
+}
