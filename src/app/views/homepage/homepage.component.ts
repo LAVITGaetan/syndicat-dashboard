@@ -15,7 +15,7 @@ export class HomepageComponent {
   adherents: any
   ngOnInit() {
 
-    this.auth.isLoggedIn()
+    
     this.afs.getCollectionDocs('adherents').subscribe(docs => {
       this.adherent_count = docs.length
       this.adherents = docs

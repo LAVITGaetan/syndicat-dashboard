@@ -21,13 +21,7 @@ export class LoginComponent {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
       if (email && password)
-        this.auth.login(email, password).then(() => {
-          alert('login')
-          this.router.navigate(['/accueil'])
-
-        }).catch((err) => {
-          alert('failed login')
-        })
+        this.auth.login(email, password)
     }
   }
 }

@@ -6,14 +6,15 @@ import { AdherentEditComponent } from './views/adherent-edit/adherent-edit.compo
 import { MandataireComponent } from './views/mandataire/mandataire.component';
 import { MandataireEditComponent } from './views/mandataire-edit/mandataire-edit.component';
 import { LoginComponent } from './views/login/login.component';
+import { GuardService } from './services/guard.service';
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
-  {path:'accueil', component: HomepageComponent},
-  {path:'adherents', component: AdherentComponent},
-  {path:'adherents/:id', component: AdherentEditComponent},
-  {path:'mandataires', component: MandataireComponent},
-  {path:'mandataires/:id', component: MandataireEditComponent},
+  {path:'accueil', component: HomepageComponent, canActivate:[GuardService]},
+  {path:'adherents', component: AdherentComponent, canActivate:[GuardService]},
+  {path:'adherents/:id', component: AdherentEditComponent, canActivate:[GuardService]},
+  {path:'mandataires', component: MandataireComponent, canActivate:[GuardService]},
+  {path:'mandataires/:id', component: MandataireEditComponent, canActivate:[GuardService]},
 
 ];
 

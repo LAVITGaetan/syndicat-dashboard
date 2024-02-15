@@ -27,7 +27,7 @@ export class AdherentComponent {
   })
 
   ngOnInit() {
-    this.auth.isLoggedIn()
+    
     this.afs.getCollectionDocs('adherents').subscribe(docs => {
       console.log(docs.length);
 

@@ -26,7 +26,7 @@ export class MandataireComponent {
     })
   
     ngOnInit() {
-      this.auth.isLoggedIn()
+      
       this.afs.getCollectionDocs('mandataires').subscribe(docs => {
         this.mandataireCollection = docs
         console.log(this.mandataireCollection);

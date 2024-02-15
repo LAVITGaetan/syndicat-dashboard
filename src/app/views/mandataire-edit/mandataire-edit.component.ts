@@ -23,7 +23,7 @@ export class MandataireEditComponent {
     phone: new FormControl('', Validators.required),
   })
   ngOnInit() {
-    this.auth.isLoggedIn()
+    
     this.route.params.subscribe(params => {
       this.id = params['id']
     })
